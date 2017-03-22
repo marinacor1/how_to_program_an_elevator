@@ -1,3 +1,4 @@
+require 'pry'
 class Elevator
 
   attr_accessor :destinations, :direction, :floor
@@ -8,25 +9,22 @@ class Elevator
     @floor = 0
   end
 
-  def go_down(destinations, direction)
-    if @destinations.count > 0
-      puts "Go down to #{destination}."
-      puts "Open door."
-      @destination.reverse.pop.reverse
-    else
-      @direction = "stopped"
-    end
+  def go_down(destinations)
+    @direction = "down"
+    @floor = destinations.last
+    puts "Go down to #{@floor}."
+    puts "Open door."
+    destinations.reverse.delete_at(-1)
+    @destinations = destinations.reverse
   end
 
   def go_up(destinations)
-    puts "Destinations = #{destinatios}"
-    if destinations.count > 0
-      puts "Go up to #{destination}."
-      puts "Open door."
-      destination.reverse.pop.reverse
-    else
-      @direction = "stopped"
-    end
+    @direction = "up"
+    @floor = destinations.last
+    puts "Go up to #{@floor}."
+    puts "Open door."
+    destinations.reverse.delete_at(-1)
+    @destiantions = destinations.reverse
   end
 
   def open_door
