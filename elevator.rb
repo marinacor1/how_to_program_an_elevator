@@ -2,13 +2,15 @@ class Elevator
 
   def initialize
     @destinations = []
-    @direction = ["stopped"]
+    @direction = "stopped"
     @floor = 0
   end
 
   def push_up(current_level, destination)
+    @direction = "up"
+    @destinations << destination
     if @floor > current_level
-      go_down(destination)
+      go_down(destination, direction)
     elsif @floor < current_level
       go_up(destination)
     else
@@ -17,8 +19,10 @@ class Elevator
   end
 
   def push_down(current_level, destination)
+    @direction = "down"
+    @destinations << destination
     if @floor < current_level
-      go_up(destination)
+      go_up(@destinations, direction)
     elsif @floor > current_level
       go_down(destination)
     else
@@ -26,21 +30,29 @@ class Elevator
     end
   end
 
-  def go_down(destination)
-    puts "Go down to #{destination}."
-    puts "Open door."
+  def go_down(destinations, direction)
+    if @destination.count > 0
+      puts "Go down to #{destination}."
+      puts "Open door."
+      @destination.reverse.pop.reverse
+    else
+      @direction = "stopped"
+    end
   end
 
-  def go_up(destination)
-    puts "Go up to #{destination}."
-    puts "Open door."
+  def go_up(destinations)
+    if @destination.count > 0
+      puts "Go up to #{destination}."
+      puts "Open door."
+      @destination.reverse.pop.reverse
+    else
+      @direction = "stopped"
+    end
   end
 
   def open_door
     puts "Open door."
   end
-
-  #at a stop one
 
 
 end
