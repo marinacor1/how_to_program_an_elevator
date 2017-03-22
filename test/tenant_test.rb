@@ -1,0 +1,22 @@
+require_relative "../lib/tenant"
+gem "minitest"
+require "minitest/autorun"
+require "minitest/pride"
+
+class TenantTest < Minitest::Test
+
+  def test_tenant_initializes
+    alex = Tenant.new(3)
+    assert_equal 3, alex.resident_floor
+  end
+
+  def test_tenant_can_go_up_elevator
+    alex = Tenant.new(3)
+    alex.push_up(3, 7)
+    assert_equal 7, alex.elevator.floor
+  end
+
+  def test_tenant_can_go_down_elevator
+
+  end
+end

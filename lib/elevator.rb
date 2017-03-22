@@ -20,7 +20,8 @@ class Elevator
 
   def go_up(destinations)
     @direction = "up"
-    @floor = destinations.last
+    @destinations << destinations
+    @floor = @destinations.last
     puts "Go up to #{@floor}."
     puts "Open door."
     destinations.reverse.delete_at(-1)
