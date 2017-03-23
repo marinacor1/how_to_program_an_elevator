@@ -34,6 +34,3 @@ class Tenant
   end
 
 end
-
-allison = Tenant.new(6)
-allison.push_down(6, 0)
