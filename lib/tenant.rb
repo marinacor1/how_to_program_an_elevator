@@ -11,11 +11,10 @@ class Tenant
 
   def push_up(current_level, destination)
     @direction = "up"
-    @elevator.destinations << destination
     if @elevator.floor > current_level
-      @elevator.go_down(@elevator.destinations)
+      @elevator.go_down(destination)
     elsif @elevator.floor < current_level
-      @elevator.go_up(@elevator.destinations)
+      @elevator.go_up(destination) #[7]
     else
       open_door
     end
@@ -25,7 +24,7 @@ class Tenant
     @elevator.direction = "down"
     @elevator.destinations << destination
     if @elevator.floor < current_level
-      @elevator.go_up(@elevator.destinations)
+      @elevator.go_up(destination)
     elsif @elevator.floor > current_level
       @elevator.go_down(destination)
     else
