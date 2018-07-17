@@ -12,7 +12,7 @@ class TenantTest < Minitest::Test
 
   def test_tenant_can_go_up_elevator
     alex = Tenant.new(3)
-    alex.push_up(3, 7)
+    alex.push_up(7)
     #tenant=> push_up
     #elevator => go_up(destinations) destinations = [7]
     assert_equal 7, alex.elevator.floor
