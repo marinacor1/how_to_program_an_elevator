@@ -3,6 +3,8 @@ gem "minitest"
 require "minitest/autorun"
 require "minitest/pride"
 
+#to run: ruby test/tenant_test.rb
+
 class TenantTest < Minitest::Test
 
   def test_tenant_initializes
